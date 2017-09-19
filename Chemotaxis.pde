@@ -1,13 +1,39 @@
- //declare bacteria variables here   
+Bacteria[] rain;  
  void setup()   
  {     
- 	//initialize bacteria variables here   
- }   
+ 	size(500, 500);
+ 	rain = new Bacteria[30];
+ 	for(int i = 0; i < rain.length; i++)
+ 	{
+ 		rain[i] = new Bacteria ();
+ 	}
+ }  
  void draw()   
  {    
- 	//move and show the bacteria   
+ 	background(212);
+ 	for(int i = 0; i < rain.length; i++)
+ 	{
+ 		rain[i].show();
+ 		rain[i].move();
+ 	}  
  }  
  class Bacteria    
  {     
- 	//lots of java!   
+ 	int myX, myY, myColor;
+ 	Bacteria()
+ 	{
+ 		myX = x;
+ 		myY = y;
+ 		myColor = ((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
+ 	}
+ 	void show()
+ 	{
+ 		fill(myColor);
+ 		ellipse(myX, myY, 21, 21);
+ 	}
+ 	void move()
+ 	{
+ 		myX = (int)(Math.random()*501);
+ 		myY = myY + (int)(Math.random()*50)-450;
+ 	}
  }    
