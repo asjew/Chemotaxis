@@ -23,29 +23,32 @@ Bacteria[] rain;
 
  class Bacteria    
  {    
- 	int myX, myY, myColor;
+ 	int myX, myY, myColor, snowY, snowLevel;
  	Bacteria()
  	{
  		myX = 250;
  		myY = 10;
  		myColor = 255;
+ 		snowY = 500;
+ 		snowLevel = 100;
  	}
  	void move()
  	{
- 		int snowLevel = 70;
+ 		rect(0, 430, 500, 70);
  		myX = myX + (int)(Math.random()*200)-100;
 		myY = myY + (int)(Math.random()*10)+30;
-	 	if(myY > 520)
+	 	if(snowY <= myY)
 	 	{
 	 		fill(255);
 	 		noStroke();
-	 		rect(0, 500 - snowLevel, 500, snowLevel);
+	 		rect(0, snowY - snowLevel, 500, snowLevel);
+	 		snowLevel = snowLevel + 10;
+	 		myY = 10;
 	 	}
 	 	if(mousePressed == true)
 	 	{
 	 		myX = 250;
 	 		myY = 10;
-	 		snowLevel = snowLevel + 20;
 	 		redraw();
 	 	}
  	}
